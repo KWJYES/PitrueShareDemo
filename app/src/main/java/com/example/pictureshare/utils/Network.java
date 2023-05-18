@@ -17,6 +17,8 @@ import okhttp3.RequestBody;
 
 public class Network {
     private static volatile Network instance;
+    public static final String appId="7055ff52d5584c409a79df30bfca4f4a";
+    public static final String appSecret="166011b3ca60ce99e4f5d9be4d1425fe7c6a2";
     private static final String baseUrl="http://47.107.52.7:88";
     private static final MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
     private static Gson gson;
