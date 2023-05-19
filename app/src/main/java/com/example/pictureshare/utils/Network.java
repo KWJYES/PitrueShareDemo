@@ -21,6 +21,11 @@ public class Network {
     public static final String appSecret="166011b3ca60ce99e4f5d9be4d1425fe7c6a2";
     private static final String baseUrl="http://47.107.52.7:88";
     private static Gson gson;
+
+    public OkHttpClient getClient() {
+        return client;
+    }
+
     private static OkHttpClient client;
 
     public Gson getGson() {
