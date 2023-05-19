@@ -22,6 +22,9 @@
 
 
     <EditText
+        android:paddingHorizontal="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="#6A6A6A"
         android:hint="username"
         android:gravity="center_vertical"
         android:maxLines="1"
@@ -35,6 +38,9 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
+        android:paddingHorizontal="5dp"
+        android:textColorHint="#6A6A6A"
+        android:textColor="@color/black"
         android:hint="password"
         android:background="@color/white"
         android:layout_marginBottom="80dp"

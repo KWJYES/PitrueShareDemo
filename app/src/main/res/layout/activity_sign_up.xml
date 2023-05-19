@@ -22,6 +22,9 @@
 
 
     <EditText
+        android:paddingHorizontal="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="#6A6A6A"
         android:hint="username"
         android:gravity="center_vertical"
         android:maxLines="1"
@@ -35,7 +38,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
+        android:paddingHorizontal="5dp"
+        android:textColorHint="#6A6A6A"
         android:hint="password"
+        android:textColor="@color/black"
         android:background="@color/white"
         android:layout_marginBottom="80dp"
         android:id="@+id/password"
@@ -49,23 +55,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:layout_marginTop="20dp"
-        android:id="@+id/btn_login"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@color/main_color2"
-        android:text="登陆"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
-        android:layout_marginTop="20dp"
         android:id="@+id/btn_sign"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="@color/main_color2"
         android:text="注册"
         app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 </androidx.constraintlayout.widget.ConstraintLayout>

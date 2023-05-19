@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
+    android:foreground="?attr/selectableItemBackground"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     app:cardCornerRadius="5dp"
+    android:background="@color/white"
     android:layout_margin="5dp"
     android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="#FBFBFB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -14,11 +17,58 @@
             android:id="@+id/imageview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="W,4:3"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W,1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:background="@color/white"
+            android:paddingEnd="15dp"
+            android:paddingStart="4dp"
+            android:paddingVertical="10dp"
+            android:gravity="end|center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/imageview">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:textColor="@color/black"
+                    android:id="@+id/user"
+                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"/>
+
+                <TextView
+                    android:textColor="#252525"
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginEnd="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:id="@+id/likeNum"/>
+
+            <ImageView
+                android:id="@+id/like"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageview" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
