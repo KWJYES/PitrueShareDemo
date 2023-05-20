@@ -22,6 +22,11 @@ public class PhotoItemAdapter extends RecyclerView.Adapter<PhotoItemAdapter.View
     List<PhotoItem.RecordsDTO> photoItems = new ArrayList<>();
     Context context;
     ItemClickCallback<PhotoItem.RecordsDTO> likeClickCallback;
+    ItemClickCallback<PhotoItem.RecordsDTO> longClickCallback;
+
+    public void setLongClickCallback(ItemClickCallback<PhotoItem.RecordsDTO> longClickCallback) {
+        this.longClickCallback = longClickCallback;
+    }
 
     public void setLikeClickCallback(ItemClickCallback<PhotoItem.RecordsDTO> likeClickCallback) {
         this.likeClickCallback = likeClickCallback;
@@ -44,6 +49,14 @@ public class PhotoItemAdapter extends RecyclerView.Adapter<PhotoItemAdapter.View
         /*加载item布局*/
         View view = LayoutInflater.from(context).inflate(R.layout.item_photo, parent, false);
         ViewHolder holder = new ViewHolder(view);
+        if (longClickCallback!=null){
+            holder.itemView.setOnLongClickListener(v -> {
+                int pos = holder.getAdapterPosition();
+                if (pos == -1) return true;//视图在刷新，点击无法得到位置
+                longClickCallback.onClick(photoItems.get(pos));
+                return true;
+            });
+        }
         holder.itemView.setOnClickListener(v -> {
             int pos = holder.getAdapterPosition();
             if (pos == -1) return;//视图在刷新，点击无法得到位置

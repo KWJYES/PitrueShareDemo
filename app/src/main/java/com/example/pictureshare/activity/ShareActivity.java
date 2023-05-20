@@ -233,7 +233,7 @@ public class ShareActivity extends AppCompatActivity {
             } catch (NetworkOnMainThreadException ex) {
                 ex.printStackTrace();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }).start();
 
@@ -283,9 +283,9 @@ public class ShareActivity extends AppCompatActivity {
             return dataResponseBody.getData().getImageCode();
         } catch (IOException e) {
             Log.d("info", "上传文件失败");
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
+        return "0";
     }
 
     private void setRV(List<SharePreviewItem> sharePreviewItems) {

@@ -65,14 +65,14 @@ public class HomeFragment extends Fragment {
         photoItems = new ArrayList<PhotoItem.RecordsDTO>();
         smartRefreshLayout.setOnRefreshListener(refreshLayout -> {
             photoItems.clear();
-            i = 0;
-            getPhotos(0);
+            i = 1;
+            getPhotos(1);
         });
         smartRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
-            i++;
+            i=photoItems.size()/30+2;
             getPhotos(i);
         });
-        getPhotos(0);
+        getPhotos(1);
     }
 
     private void getPhotos(int i) {
@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment {
         Network.getInstance().request(request, new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Toast.makeText(getActivity(), "网络错误！", Toast.LENGTH_SHORT).show();
+                getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), "网络错误！", Toast.LENGTH_SHORT).show());
                 //TODO 请求失败处理
                 e.printStackTrace();
             }
@@ -117,7 +117,7 @@ public class HomeFragment extends Fragment {
                     getActivity().runOnUiThread(() -> {
                         smartRefreshLayout.finishRefresh();
                         smartRefreshLayout.finishLoadMore();
-                        if (i == 0) setRV(photoItems);
+                        if (i == 1) setRV();
                         else adapter.notifyDataSetChanged();
                     });
                 }
@@ -125,8 +125,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void setRV(List<PhotoItem.RecordsDTO> photoItems) {
-        this.photoItems.addAll(photoItems);
+    private void setRV() {
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new PhotoItemAdapter(this.photoItems);
